@@ -65,6 +65,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 1.3rem;
 }
 
 .info {
@@ -80,7 +81,8 @@ main {
 
 @media screen and (min-width: 980px) {
     main {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
         justify-content: center;
         align-items: center;
 

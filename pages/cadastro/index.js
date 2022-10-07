@@ -1,14 +1,10 @@
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Botao from "../../components/botao";
 import InputPublico from "../../components/inputPublico";
 import { validarEmail, validarSenha, validarNome, validarConfirmacaoSenha } from "../../utils/validadores";
 import UsuarioService from "../../services/UsuarioService";
 
-import imagemUsuarioAtivo from "../../public/imagens/usuarioAtivo.svg";
-import imagemEnvelope from "../../public/imagens/envelope.svg";
-import imagemChave from "../../public/imagens/chave.svg";
 import { useRouter } from "next/router";
 
 const usuarioService = new UsuarioService();
@@ -61,13 +57,12 @@ export default function Cadastro() {
     }
 
     return (
-        <section className={`paginaCadastro paginaPublica`}>
+        <section className={`paginaPublica`}>
 
             <div className="conteudoPaginaPublica">
                 <form onSubmit={aoSubmeter}>
 
                     <InputPublico
-                        imagem={imagemUsuarioAtivo}
                         texto="Nome Completo"
                         tipo="text"
                         aoAlterarValor={e => setNome(e.target.value)}
@@ -77,7 +72,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemEnvelope}
                         texto="E-mail"
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
@@ -87,7 +81,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemChave}
                         texto="Senha"
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
@@ -97,7 +90,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemChave}
                         texto="Confirmar Senha"
                         tipo="password"
                         aoAlterarValor={e => setConfirmacaoSenha(e.target.value)}

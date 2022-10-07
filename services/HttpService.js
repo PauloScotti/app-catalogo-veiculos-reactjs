@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AcaoMensagem } from "../helpers/AcaoMensagem";
 
 export default class HttpService {
     constructor() {
@@ -6,7 +7,13 @@ export default class HttpService {
             baseURL: process.env.NEXT_PUBLIC_API_URL + '/api'
         });
 
+        this.quantidadeRequisicoes = 0;
         this.axios.interceptors.request.use((config) => {
+            this.quantidadeRequisicoes++;
+            if (this.quantidadeRequisicoes === 1) {
+                AcaoMensagem.exibir();
+            }
+
             const token = localStorage.getItem('token');
             if(token){
                 config.headers.Authorization = 'Bearer ' + token
@@ -18,6 +25,15 @@ export default class HttpService {
             }
 
             return config;
+        });
+
+        this.axios.interceptors.response.use((response) => {
+            this.quantidadeRequisicoes--;
+            if (this.quantidadeRequisicoes === 0) {
+                AcaoMensagem.ocultar();
+            }
+
+            return response;
         });
     }
 

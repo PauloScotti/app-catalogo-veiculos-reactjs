@@ -33,6 +33,10 @@ export default class UsuarioService extends HttpService {
     async cadastroUsuarios(dados) {
         return this.post('/cadastroUsuarios', dados);
     }
+    
+    async atualizarPerfil(dados) {
+        return this.put(`/usuario`, dados);
+    }
 
     estaAutenticado() {
         return localStorage.getItem('token');

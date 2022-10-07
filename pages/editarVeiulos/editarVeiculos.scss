@@ -19,10 +19,49 @@
         width: 100%;
     }
     
-    .inputPublicoModulos{
+    .inputPublicoVeiulos{
         border: 1px solid $corPrimaria;
         border-radius: 26px;
         padding: 50px;
         margin: 0 auto;
+
+        .edicaoFotoVeiculo {
+            margin: 16px 0px;
+            text-align: center;
+            cursor: pointer;
+
+            .fotoVeiculo {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 2px;
+            }
+
+            span {
+                font-size: 12px;
+                color: $corPrimaria;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+
+        .inputPublicoVeiulos {
+            flex: 1;
+
+            .edicaoFotoVeiculo {
+                .fotoVeiculo {
+                    width: 120px;
+                    height: 120px;
+                }
+
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
     }
 }

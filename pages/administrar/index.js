@@ -4,9 +4,8 @@ import comAutorizacao from "../../hoc/comAutorizacao";
 import ModalVeiculos from '../../components/modais';
 import CadastroUsuarioAdm from "../cadastro/CadastroUsuarioAdm";
 import CadastroVeiculos from '../cadastroVeiulos';
-import Image from "next/image";
+import Header from '../../components/layout/header';
 
-import Header from "../../components/layout/header";
 import EditarVeiulos from "../editarVeiulos";
 
 const veiculosService = new VeiculosService();
@@ -15,7 +14,7 @@ function Administrar() {
     const [listaVeiculos, setListaVeiculos] = useState([]);
 
     const listandoVeiculos = async () => {
-        try{
+        try {
             const resultado = await veiculosService.listarVeiculos();
             setListaVeiculos(resultado.data);
         } catch (e) {
@@ -33,8 +32,9 @@ function Administrar() {
 
     return (
         <>
+            <Header />
             <div className="container-listagem" onSubmit={atualizaDados}>
-                <div>
+                <div onSubmit={atualizaDados}>
                     <ModalVeiculos
                         titulo={"Cadastro de Veículos"}
                         botaoAbrirModal={"Cadastrar Veículo"}
@@ -43,23 +43,24 @@ function Administrar() {
                     <ModalVeiculos
                         titulo={"Cadastro de Usuários"}
                         botaoAbrirModal={"Cadastrar Usuário"}
-                        conteudo={<CadastroUsuarioAdm /> }
+                        conteudo={<CadastroUsuarioAdm />}
                     />
                 </div>
                 {listaVeiculos.map((dadosVeiculos) => (
                     <>
-                        <div className="container-item" onSubmit={atualizaDados}>
+                        <div className="container-item">
                             <div>
                                 <p>{dadosVeiculos.nome}</p>
                                 <p>{dadosVeiculos.marca}</p>
                                 <p>Modelo: {dadosVeiculos.modelo} </p>
                                 <p>Valor: {dadosVeiculos.valor} </p>
+                                <img src={dadosVeiculos.foto} alt="Foto do carro" />
                             </div>
                             <div className="botoesAcoes" onSubmit={atualizaDados}>
                                 <ModalVeiculos
-                                    titulo={"Editar Módulo"}
+                                    titulo={"Editar Veículo"}
                                     botaoAbrirModal={"Editar"}
-                                    conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)}/>}
+                                    conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
                                 />
                             </div>
                         </div>

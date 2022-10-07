@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalModulos({
+function ModalVeiculos({
     botaoAbrirModal,
     titulo,
     conteudo
@@ -19,7 +19,7 @@ function ModalModulos({
 
   return (
     <>
-      <Button className="botaoModal" variant="warning" onClick={handleShow}>
+      <Button className="botaoModal" variant="primary" onClick={handleShow}>
         {botaoAbrirModal}
       </Button>
 
@@ -35,4 +35,4 @@ function ModalModulos({
   );
 }
 
-export default ModalModulos
+export default ModalVeiculos

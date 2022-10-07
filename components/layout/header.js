@@ -41,7 +41,7 @@ export default function Header() {
                     <div className="logo"><Link href='/'>LOGO</Link></div>
                     <div className={`hamburguer ${active}`} onClick={ativo}></div>
                     <ul className={`menu ${active}`}>
-                        <li>{primeiroNome ? <span>{'Olá, ' + primeiroNome}</span> : ''}</li>
+                        <li>{primeiroNome ? <Link href='/editar'>{'Olá, ' + primeiroNome}</Link> : ''}</li>
                         <li><Link href='/'>Home</Link></li>
                         <li>{primeiroNome ? <Link href={'/administrar'}>Administrar</Link> : ""}</li>
                         <li>{primeiroNome ? <button onClick={logout}>Sair</button> : <Link href='/login'>Login</Link>}</li>

@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 import { useRouter } from "next/router";
-import Header from "../components/layout/header";
 import UsuarioService from "../services/UsuarioService"
 
 const usuarioService = new UsuarioService();
@@ -19,7 +18,6 @@ export default function comAutorizacao(Componente) {
 
             return (
                 <>
-                    <Header usuarioLogado={usuarioLogado} />
                     <Componente usuarioLogado={usuarioLogado} {...props} />
                 </>
             );

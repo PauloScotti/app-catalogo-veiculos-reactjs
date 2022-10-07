@@ -9,6 +9,17 @@
     border: 1px solid $corPrimaria;
 }
 
+@mixin botaoVermelho {
+    background-color: $vermelho;
+    color: $branco;
+}
+
+@mixin botaoVermelhoInvertido {
+    background-color: $branco;
+    color: $vermelho;
+    border: 1px solid $vermelho;
+}
+
 .btn {
     width: 100%;
     border: none;
@@ -28,6 +39,14 @@
 
         &:hover {
             @include botaoPrimario;
+        }
+    }
+    
+    &.vermelho{
+        @include botaoVermelho;
+
+        &:hover {
+            @include botaoVermelhoInvertido;
         }
     }
 

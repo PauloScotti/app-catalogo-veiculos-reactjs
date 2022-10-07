@@ -19,10 +19,37 @@
         width: 100%;
     }
     
-    .inputPublicoModulos{
+    .inputPublicoVeiulos{
         border: 1px solid $corPrimaria;
         border-radius: 26px;
         padding: 50px;
         margin: 0 auto;
+    }
+}
+
+.paginaCadastro {
+
+    .uploadImagemContainer {
+        text-align: center;
+        position: relative;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        .fotoVeiculoPreview {
+            height: 120px;
+            width: 120px;
+        }
+
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        .rodapePaginaPublica {
+            display: flex;
+            justify-content: center;
+            
+            p {
+                margin-right: 6px;
+            }
+        }
     }
 }

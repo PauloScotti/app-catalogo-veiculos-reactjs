@@ -3,11 +3,6 @@ import InputPublico from "../../components/inputPublico";
 import { useState } from "react";
 import UsuarioService from '../../services/UsuarioService';
 
-
-import imagemEmail from '../../public/imagens/envelope.svg';
-import imagemChave from '../../public/imagens/chave.svg';
-import usuarioAtivo from '../../public/imagens/usuarioAtivo.svg';
-import nivelAcessoPNG from '../../public/imagens/nivelAcesso.png';
 import {validarEmail, validarSenha, validarNome, validarConfirmacaoSenha, validarnivelAcesso} from '../../utils/validadores';
 import AcaoMensagem from "../../components/AcaoMensagem";
 
@@ -68,7 +63,6 @@ export default function Cadastro() {
                 <form onSubmit={aoSubmeter}>
                     
                     <InputPublico
-                        imagem={usuarioAtivo}
                         texto="Nome Completo"
                         tipo="nome"
                         aoAlterarValor={e => setNome(e.target.value)}
@@ -78,7 +72,6 @@ export default function Cadastro() {
                     />
                     
                     <InputPublico
-                        imagem={nivelAcessoPNG}
                         texto="Nível de Acesso"
                         tipo="nivelAcesso"
                         aoAlterarValor={e => setNivelAcesso(e.target.value)}
@@ -88,7 +81,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemEmail}
                         texto="E-mail"
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
@@ -98,7 +90,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemChave}
                         texto="Senha"
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
@@ -108,7 +99,6 @@ export default function Cadastro() {
                     />
 
                     <InputPublico
-                        imagem={imagemChave}
                         texto="Confirmar Senha"
                         tipo="password"
                         aoAlterarValor={e => setConfirmaSenha(e.target.value)}

@@ -6,9 +6,6 @@ import {validarEmail, validarSenha} from '../../utils/validadores';
 import UsuarioService from "../../services/UsuarioService";
 import { useRouter } from 'next/router';
 
-import imagemEmail from '../../public/imagens/envelope.svg';
-import imagemChave from '../../public/imagens/chave.svg';
-
 const usuarioService = new UsuarioService();
 
 export default function Login() {
@@ -57,7 +54,6 @@ export default function Login() {
             <div className="conteudoPaginaPublica">
                 <form onSubmit={aoSubmeter}>
                     <InputPublico
-                        imagem={imagemEmail}
                         texto="E-mail"
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
@@ -67,7 +63,6 @@ export default function Login() {
                     />
 
                     <InputPublico
-                        imagem={imagemChave}
                         texto="Senha"
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
@@ -85,7 +80,7 @@ export default function Login() {
 
                 <div className="rodapePaginaPublica">
                     <p>Não possui uma conta?</p>
-                    <Link href="/cadastroUsuario">Faça seu cadastro agora</Link>
+                    <Link href="/cadastro">Faça seu cadastro agora</Link>
                 </div>
 
             </div>
