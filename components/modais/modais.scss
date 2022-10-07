@@ -1,0 +1,17 @@
+.botaoModal {
+    border: none;
+    border-radius: 12px;
+    width: 175px;
+    height: 40px;
+    padding: 2px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    align-items: center;
+    margin-left: 5px;
+
+    span{
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+}

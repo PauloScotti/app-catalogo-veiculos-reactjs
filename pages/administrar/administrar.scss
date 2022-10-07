@@ -1,0 +1,99 @@
+.container-listagem{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    img{
+        width: 280px;
+    }
+
+    p{
+        margin-top: 15px;
+        display: block;
+        font-size: 15px;
+        color: $corPrimaria;
+        font-weight: bold;
+    }
+
+    @media screen and (min-width: 992px) {
+        img{
+            width: 500px;
+        }
+
+        p{
+            font-size: 28px;
+        }
+    }
+
+    .aulas{
+        display: none;
+    }
+}
+
+.container-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    background-color: $lightGreyColor;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    max-width: 1300px;
+
+    .iconeMais{
+        cursor: pointer;
+    }
+
+    img{
+        width: 18px;
+        margin-right: 15px;
+    }
+    
+    button {
+        max-width: 80px !important;
+    }
+
+    div{
+        p{
+            margin: 0px;
+            color: $darkGreyColor;
+            font-weight: bold;
+            font-size: 15px;
+
+            &.concluido{
+                text-decoration: line-through;
+            }
+        }
+
+        span{
+            font-size: 14px;
+            color: $darkGreyColor;
+            font-weight: normal;
+        }
+    }
+
+
+    @media screen and (min-width:992px) {
+        height: 70px;
+        padding: 20px;
+
+        img{
+            width: 20px;
+        }
+
+        &.ativo{
+            cursor: pointer;
+
+            &:hover{
+                border-color: $corPrimaria;
+                border-style: solid;
+                border-width: 1px;
+            }
+        }
+    }
+}

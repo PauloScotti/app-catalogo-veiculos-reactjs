@@ -1,0 +1,124 @@
+header{
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid $corPrimaria;
+}
+
+.navbar{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 50px;
+    border-radius: 10px;
+}
+
+.logo a {
+    color: $corPrimaria;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.hamburguer{
+    width: 30px;
+    height: 30px;
+
+    background-color: transparent;
+    border-radius: 5px;
+    border: 0;
+
+    position: relative; 
+    cursor: pointer;
+
+    display: none;
+}
+
+.hamburguer::after{
+    content: "";
+
+    position: absolute;
+    top: 35%;
+    left: 15%;
+
+    width: 70%;
+    height: 5%;
+    border-radius: 5px;
+
+    background-color: $corPrimaria;
+}
+
+.hamburguer::before{
+    content: "";
+
+    position: absolute;
+    top: 55%;
+    left: 15%;
+    width: 70%;
+    height: 5%;
+    border-radius: 5px;
+
+    background-color: $corPrimaria;
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+li{
+    margin-left: 10px;
+}
+
+li a{
+    display: block;
+    text-decoration: none;
+    color: $corPrimaria;
+}
+
+li span {
+    color: $corPrimaria;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $vermelho;
+    padding: 0;
+}
+
+@media screen and (max-width: 980px) {
+    .hamburguer{
+        display: block;
+        z-index: 999;
+    }
+    .menu{
+        position: fixed;
+        top: 0;
+        right: -100%;
+
+        height: 100vh;
+        margin: 0;
+
+        padding: 100px 20px;
+        width: 100%;
+        max-width: 250px;
+        background-color: $branco;
+        z-index: 1;
+
+        flex-direction: column;
+
+        transition: 0.5s ease;
+    }
+
+    .menu.active{
+        right: 0;
+    }
+}

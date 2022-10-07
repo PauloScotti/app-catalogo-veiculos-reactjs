@@ -1,0 +1,29 @@
+@import 'variaveis.scss';
+
+* {
+  font-family: $fontRegular;
+  font-size: 14px;
+}
+
+html,
+body,
+#__next {
+  margin: 0;
+  height: 100vh;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+@import '../public/fonts/fonts.scss';
+@import '../components/botao/botao.scss';
+@import './paginaPublica.scss';
+@import '../components/inputPublico/inputPublico.scss';
+@import '../components/layout/header.scss';
+@import '../pages/veiculos/veiculos.scss';
+@import '../pages/administrar/administrar.scss';
+@import '../pages/editarVeiulos/editarVeiculos.scss';
+@import '../pages/cadastroVeiulos/cadastroVeiculos.scss';
+@import '../components/modais/modais.scss';
+@import '../components/AcaoMensagem/AcaoMensagem.scss';
