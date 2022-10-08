@@ -19,7 +19,7 @@ function EditarPerfil({ usuarioLogado }) {
         }
 
         setNome(usuarioLogado.nome);
-    }, []);
+    }, [usuarioLogado]);
 
     const atualizarPerfil = async () => {
         try {

@@ -32,7 +32,7 @@ const validaModelo = (modelo) => {
 }
 
 const validaValor = (valor) => {
-    return valor?.toString().length > 4;
+    return valor?.toString().length > 3;
 }
 
 const validaFoto = (foto) => {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import VeiculosService from "../../services/VeiculosService";
 import comAutorizacao from "../../hoc/comAutorizacao";
@@ -17,13 +18,14 @@ function Administrar() {
         try {
             const resultado = await veiculosService.listarVeiculos();
             setListaVeiculos(resultado.data);
+            console.log('chamou')
         } catch (e) {
             console.log(e);
         }
     }
 
     const atualizaDados = () => {
-        listandoVeiculos()
+        listandoVeiculos();
     }
 
     useEffect(() => {
@@ -46,11 +48,11 @@ function Administrar() {
                         conteudo={<CadastroUsuarioAdm />}
                     />
                 </div>
-                {listaVeiculos.map((dadosVeiculos) => (
+                {listaVeiculos.map((dadosVeiculos, index) => (
                     <>
                         <div className="container-item">
                             <div>
-                                <p>{dadosVeiculos.nome}</p>
+                                <p key={index}>{dadosVeiculos.nome}</p>
                                 <p>{dadosVeiculos.marca}</p>
                                 <p>Modelo: {dadosVeiculos.modelo} </p>
                                 <p>Valor: {dadosVeiculos.valor} </p>

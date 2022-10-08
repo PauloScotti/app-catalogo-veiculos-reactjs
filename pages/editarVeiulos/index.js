@@ -145,7 +145,7 @@ function EditarVeiculos({ idVeiculo }) {
 
                         <InputPublico
                             texto="Valor"
-                            tipo="text"
+                            tipo="number"
                             aoAlterarValor={e => setValor(e.target.value)}
                             valor={valor}
                             mensagemValidacao="O valor do veículo precisa ter pelo menos 4 digitos"

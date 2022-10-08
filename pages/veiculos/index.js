@@ -15,20 +15,20 @@ function Veiculos() {
 
     return (
         <main>
-            {veiculos.map(v => (
+            {veiculos.map((v, i) => (
                 <>
-                    <section class="cards">
-                        <div class="card">
-                            <div class="image">
+                    <section className="cards" key={i}>
+                        <div className="card">
+                            <div className="image">
                                 <img src={v.foto} />
                             </div>
-                            <div class="content">
-                                <h2 class="title">
+                            <div className="content">
+                                <h2 className="title">
                                     {v.nome} {v.marca}
-                                </h2>
-                                <p class="text--medium">{v.modelo}</p>
-                                <div class="info">
-                                    <p class="price text--medium">R$ { parseFloat(v.valor) }</p>
+                                </h2>   
+                                <p className="text--medium">{v.modelo}</p>
+                                <div className="info">
+                                    <p className="price text--medium">R$ { v.valor.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") }</p>
                                 </div>
                             </div>
                         </div>
