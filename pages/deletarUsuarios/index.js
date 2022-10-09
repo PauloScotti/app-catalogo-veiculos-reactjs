@@ -1,30 +1,31 @@
 import { useState } from "react";
 import Botao from "../../components/botao";
 import comAutorizacao from '../../hoc/comAutorizacao';
-import VeiculosService from "../../services/VeiculosService";
+import UsuarioService from "../../services/UsuarioService";
 import AcaoMensagem from "../../components/AcaoMensagem";
 
-const veiculoService = new VeiculosService();
+const usuarioService = new UsuarioService();
 
-function DeletarVeiculos({ idVeiculo }) {
+function DeletarUsuarios({ idUsuario }) {
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
     const [classeAcao, setClasseAcao] = useState("");
     const [mensagemAcao, setMensagemAcao] = useState("");
 
-    const id = idVeiculo;
+    const id = idUsuario;
 
-    const deletarVeiculo = async () => {
+    const deletarUsuario = async (e) => {
+        e.preventDefault();
 
         setEstaSubmetendo(true);
         setClasseAcao('deletar');
         setMensagemAcao('Deletado com sucesso!');
 
         try {
-            await veiculoService.deletarVeiculos(id);
+            await usuarioService.deletarUsuarios(id);
 
         } catch (error) {
             alert(
-                "Erro ao deletar o veículo. " + error?.response?.data?.erro
+                "Erro ao deletar o usuário. " + error?.response?.data?.erro
             );
         }
 
@@ -37,14 +38,14 @@ function DeletarVeiculos({ idVeiculo }) {
                 <AcaoMensagem classe={classeAcao} mensagem={mensagemAcao} />
                 <div className="inputPublicoVeiulos">
 
-                    <form onSubmit={deletarVeiculo}>
-                        <p>Deseja realmente deletar</p>
-                    <Botao
-                        texto={"Deletar veículo?"}
-                        cor="vermelho"
-                        tipo="submit"
-                        desabilitado={estaSubmetendo}
-                    />
+                    <p>Deseja realmente deletar o usuário?</p>
+                    <form onSubmit={deletarUsuario}>
+                        <Botao
+                            texto={"Confirmar"}
+                            cor="vermelho"
+                            tipo="submit"
+                            desabilitado={estaSubmetendo}
+                        />
                     </form>
                 </div>
             </div>
@@ -52,4 +53,4 @@ function DeletarVeiculos({ idVeiculo }) {
     )
 }
 
-export default comAutorizacao(DeletarVeiculos);
+export default comAutorizacao(DeletarUsuarios);

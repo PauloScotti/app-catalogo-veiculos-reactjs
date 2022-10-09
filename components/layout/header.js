@@ -35,6 +35,23 @@ export default function Header() {
         );
     }, [token]);
 
+    if (estaAutenticado === null) {
+        return (
+            <header>
+                <div className="navbar">
+                    <div className="logo"><Link href='/'>LOGO</Link></div>
+                    <div className={`hamburguer ${active}`} onClick={ativo}></div>
+                    <ul className={`menu ${active}`}>
+                        <li>{primeiroNome ? <span>{'Olá, ' + primeiroNome}</span> : ''}</li>
+                        <li><Link href='/'>Home</Link></li>
+                        <li>{primeiroNome ? <button onClick={logout}>Sair</button> : <Link href='/login'>Login</Link>}</li>
+                    </ul>
+                </div>
+            </header>
+        )
+      }
+    
+      if (estaAutenticado) {
         return (
             <header>
                 <div className="navbar">
@@ -43,7 +60,26 @@ export default function Header() {
                     <ul className={`menu ${active}`}>
                         <li>{primeiroNome ? <Link href='/editar'>{'Olá, ' + primeiroNome}</Link> : ''}</li>
                         <li><Link href='/'>Home</Link></li>
-                        <li>{primeiroNome ? <Link href={'/administrar'}>Administrar</Link> : ""}</li>
+                        <li>{primeiroNome ? <Link href={'/administrar'}>Administrar Veículos</Link> : ""}</li>
+                        <li>{primeiroNome ? <Link href={'/administrarUsuarios'}>Administrar Usuários</Link> : ""}</li>
+                        <li>{primeiroNome ? <button onClick={logout}>Sair</button> : <Link href='/login'>Login</Link>}</li>
+                    </ul>
+                </div>
+            </header>
+        );
+      }
+
+
+        return (
+            <header>
+                <div className="navbar">
+                    <div className="logo"><Link href='/'>LOGO</Link></div>
+                    <div className={`hamburguer ${active}`} onClick={ativo}></div>
+                    <ul className={`menu ${active}`}>
+                        <li>{primeiroNome ? <Link href='/editar'>{'Olá, ' + primeiroNome}</Link> : ''}</li>
+                        <li><Link href='/'>Home</Link></li>
+                        <li>{primeiroNome ? <Link href={'/administrar'}>Administrar Veículos</Link> : ""}</li>
+                        <li>{primeiroNome ? <Link href={'/administrarUsuarios'}>Administrar Usuários</Link> : ""}</li>
                         <li>{primeiroNome ? <button onClick={logout}>Sair</button> : <Link href='/login'>Login</Link>}</li>
                     </ul>
                 </div>

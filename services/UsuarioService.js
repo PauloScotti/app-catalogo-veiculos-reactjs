@@ -33,9 +33,29 @@ export default class UsuarioService extends HttpService {
     async cadastroUsuarios(dados) {
         return this.post('/cadastroUsuarios', dados);
     }
+
+    async cadastro(dados) {
+        return this.post('/cadastroUsuarios', dados);
+    }
     
     async atualizarPerfil(dados) {
         return this.put(`/usuario`, dados);
+    }
+    
+    async listarUsuarios() {
+        return this.get(`/pesquisaUsuarios`);
+    }
+
+    async listarUsuariosPorId(id) {
+        return this.get(`/pesquisaUsuarios?id=${id}`);
+    }
+
+    async editarUsuarios(id, dados) {
+        return this.put(`/editarUsuarios?id=${id}`, dados);
+    }
+
+    async deletarUsuarios(id) {
+        return this.delete(`/usuario?id=${id}`);
     }
 
     estaAutenticado() {

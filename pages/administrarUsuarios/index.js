@@ -1,35 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
-import VeiculosService from "../../services/VeiculosService";
+import UsuariosService from "../../services/UsuarioService";
 import comAutorizacao from "../../hoc/comAutorizacao";
 import ModalVeiculos from '../../components/modais';
 import CadastroUsuarioAdm from "../cadastro/CadastroUsuarioAdm";
-import CadastroVeiculos from '../cadastroVeiulos';
 import Header from '../../components/layout/header';
 
-import EditarVeiulos from "../editarVeiulos";
-import DeletarVeiculos from "../deletarVeiculos";
+import EditarUsuarios from "../editarUsuarios";
+import DeletarUsuarios from "../deletarUsuarios";
 
-const veiculosService = new VeiculosService();
+const usuariosService = new UsuariosService();
 
-function Administrar() {
-    const [listaVeiculos, setListaVeiculos] = useState([]);
+function AdministrarUsuarios() {
+    const [listaUsuarios, setListaUsuarios] = useState([]);
 
-    const listandoVeiculos = async () => {
+    const listandoUsuarios = async () => {
         try {
-            const resultado = await veiculosService.listarVeiculos();
-            setListaVeiculos(resultado.data);
+            const resultado = await usuariosService.listarUsuarios();
+            setListaUsuarios(resultado.data);
         } catch (e) {
             console.log(e);
         }
     }
 
     const atualizaDados = () => {
-        listandoVeiculos();
+        listandoUsuarios();
     }
 
     useEffect(() => {
-        listandoVeiculos()
+        listandoUsuarios()
     }, []);
 
     return (
@@ -38,37 +37,30 @@ function Administrar() {
             <div className="container-listagem" onSubmit={atualizaDados}>
                 <div onSubmit={atualizaDados}>
                     <ModalVeiculos
-                        titulo={"Cadastro de Veículos"}
-                        botaoAbrirModal={"Cadastrar Veículo"}
-                        conteudo={<CadastroVeiculos />}
-                    />
-                    <ModalVeiculos
                         titulo={"Cadastro de Usuários"}
                         botaoAbrirModal={"Cadastrar Usuário"}
                         conteudo={<CadastroUsuarioAdm />}
                     />
                 </div>
-                {listaVeiculos.map((dadosVeiculos, index) => (
+                {listaUsuarios.map((dadosUsuarios, index) => (
                     <>
                         <div className="container-item">
                             <div>
-                                <p key={index}>{dadosVeiculos.nome}</p>
-                                <p>{dadosVeiculos.marca}</p>
-                                <p>Modelo: {dadosVeiculos.modelo} </p>
-                                <p>Valor: {dadosVeiculos.valor} </p>
-                                <img src={dadosVeiculos.foto} alt="Foto do carro" />
+                                <p key={index}>{dadosUsuarios.nome}</p>
+                                <p>{dadosUsuarios.email}</p>
+                                <p>{dadosUsuarios.nivelAcesso} </p>
                             </div>
                             <div className="botoesAcoes" onSubmit={atualizaDados}>
                                 <ModalVeiculos
-                                    titulo={"Editar Veículo"}
+                                    titulo={"Editar Usuário"}
                                     botaoAbrirModal={"Editar"}
-                                    conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
+                                    conteudo={<EditarUsuarios idUsuario={(dadosUsuarios._id)} />}
                                 />
                                 <ModalVeiculos
-                                    titulo={"Deletar Veículo"}
+                                    titulo={"Deletar Usuário"}
                                     botaoAbrirModal={"Deletar"}
                                     variant="danger"
-                                    conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
+                                    conteudo={<DeletarUsuarios idUsuario={(dadosUsuarios._id)} />}
                                 />
                             </div>
                         </div>
@@ -80,4 +72,4 @@ function Administrar() {
     )
 }
 
-export default comAutorizacao(Administrar);
+export default comAutorizacao(AdministrarUsuarios);
