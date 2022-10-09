@@ -17,3 +17,9 @@ Projeto de catálogo de veículos desenvolvido com react.js e next.
 1. configurar as variáveis de ambiente no arquivo `.env.local`
 1. instale as dependencias do projeto `npm i`
 1. execute o comando `npm run dev` para subir a aplicação
+
+### Problemas não resolvidos
+
+1. Ao atualizar as páginas de administração e edição do usuário, apresenta problemas de renderização provavelmente ligado ao comAutorizacao, mas não consegui resolver
+1. Ao cadastrar novo veículo a lista não atualiza os dados na lista
+1. Ao deletar o veículo, as vezes não atualiza os dados na lista
