@@ -8,6 +8,7 @@ import CadastroVeiculos from '../cadastroVeiulos';
 import Header from '../../components/layout/header';
 
 import EditarVeiulos from "../editarVeiulos";
+import DeletarVeiculos from "../deletarVeiculos";
 
 const veiculosService = new VeiculosService();
 
@@ -63,6 +64,12 @@ function Administrar() {
                                     titulo={"Editar Veículo"}
                                     botaoAbrirModal={"Editar"}
                                     conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
+                                />
+                                <ModalVeiculos
+                                    titulo={"Deletar Veículo"}
+                                    botaoAbrirModal={"Deletar"}
+                                    variant="danger"
+                                    conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
                                 />
                             </div>
                         </div>

@@ -5,7 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 function ModalVeiculos({
     botaoAbrirModal,
     titulo,
-    conteudo
+    conteudo,
+    variant = "primary"
 }) {
   const [show, setShow] = useState(false);
 
@@ -19,7 +20,7 @@ function ModalVeiculos({
 
   return (
     <>
-      <Button className="botaoModal" variant="primary" onClick={handleShow}>
+      <Button className="botaoModal" variant={variant} onClick={handleShow}>
         {botaoAbrirModal}
       </Button>
 

@@ -75,24 +75,6 @@ function EditarVeiculos({ idVeiculo }) {
         setEstaSubmetendo(false);
     }
 
-    const deletarVeiulo = async (idVeiculo) => {
-
-        setEstaSubmetendo(true);
-        setClasseAcao('deletar');
-        setMensagemAcao('Deletado com sucesso!');
-
-        try {
-            await veiculoService.deletarVeiculos(idVeiculo);
-
-        } catch (error) {
-            alert(
-                "Erro ao deletar o veículo. " + error?.response?.data?.erro
-            );
-        }
-
-        setEstaSubmetendo(false);
-    }
-
     
     const abrirSeletorDeArquivos = () => {
         inputFoto?.click();
@@ -158,13 +140,6 @@ function EditarVeiculos({ idVeiculo }) {
                             desabilitado={!validarFormulario() || estaSubmetendo}
                         />
                     </form>
-                    <Botao
-                        texto={"Deletar veículo?"}
-                        cor="vermelho"
-                        tipo="submit"
-                        manipularClique={() => deletarVeiulo(id)}
-                        desabilitado={estaSubmetendo}
-                    />
                 </div>
             </div>
         </>
