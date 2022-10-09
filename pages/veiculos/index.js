@@ -28,7 +28,7 @@ function Veiculos() {
                                 </h2>   
                                 <p className="text--medium">{v.modelo}</p>
                                 <div className="info">
-                                    <p className="price text--medium">R$ { v.valor.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") }</p>
+                                    <p className="price text--medium">{ v.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }</p>
                                 </div>
                             </div>
                         </div>
