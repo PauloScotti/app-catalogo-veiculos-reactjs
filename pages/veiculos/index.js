@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import VeiculosService from '../../services/VeiculosService';
 
@@ -18,6 +19,7 @@ function Veiculos() {
             {veiculos.map((v, i) => (
                 <>
                     <section className="cards" key={i}>
+                        <Link href={`/veiculo?id=${v._id}`}>
                         <div className="card">
                             <div className="image">
                                 <img src={v.foto} />
@@ -32,6 +34,7 @@ function Veiculos() {
                                 </div>
                             </div>
                         </div>
+                        </Link>
                     </section>
                 </>
             ))}

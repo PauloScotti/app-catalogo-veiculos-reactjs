@@ -24,3 +24,4 @@ Projeto de catálogo de veículos desenvolvido com react.js e next.
 1. Ao cadastrar novo veículo a lista não atualiza os dados na lista
 1. Ao deletar o veículo, as vezes não atualiza os dados na lista (Resolvido removendo o parágrafo do form)
 1. Cliente não consegue editar o perfil (Não consegui ajustar ainda)
+1. O botão comprar da página do veículo específico não efetua nenhuma ação

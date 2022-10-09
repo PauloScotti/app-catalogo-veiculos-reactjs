@@ -1,0 +1,28 @@
+.paginaVeículo{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 32px;
+    background-color: $branco;
+
+    .conteudoPaginaVeículo {
+
+        img, svg{
+            height: 250px;
+            width: 250px;
+        }
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        flex-direction: row;
+        font-size: 18px;
+
+        .conteudoPaginaVeículo {
+            border: 1px solid $corPrimaria;
+            border-radius: 26px;
+            padding: 50px;
+        }
+    }
+}

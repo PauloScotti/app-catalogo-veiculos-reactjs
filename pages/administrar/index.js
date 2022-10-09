@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import VeiculosService from "../../services/VeiculosService";
 import comAutorizacao from "../../hoc/comAutorizacao";
 import ModalVeiculos from '../../components/modais';
-import CadastroUsuarioAdm from "../cadastro/CadastroUsuarioAdm";
 import CadastroVeiculos from '../cadastroVeiulos';
 import Header from '../../components/layout/header';
 
@@ -42,20 +41,15 @@ function Administrar() {
                         botaoAbrirModal={"Cadastrar Veículo"}
                         conteudo={<CadastroVeiculos />}
                     />
-                    <ModalVeiculos
-                        titulo={"Cadastro de Usuários"}
-                        botaoAbrirModal={"Cadastrar Usuário"}
-                        conteudo={<CadastroUsuarioAdm />}
-                    />
                 </div>
                 {listaVeiculos.map((dadosVeiculos, index) => (
                     <>
                         <div className="container-item">
                             <div>
-                                <p key={index}>{dadosVeiculos.nome}</p>
-                                <p>{dadosVeiculos.marca}</p>
+                                <p key={index}>Nome: {dadosVeiculos.nome}</p>
+                                <p>Marca: {dadosVeiculos.marca}</p>
                                 <p>Modelo: {dadosVeiculos.modelo} </p>
-                                <p>Valor: {dadosVeiculos.valor} </p>
+                                <p>Valor: {dadosVeiculos.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </p>
                                 <img src={dadosVeiculos.foto} alt="Foto do carro" />
                             </div>
                             <div className="botoesAcoes" onSubmit={atualizaDados}>
