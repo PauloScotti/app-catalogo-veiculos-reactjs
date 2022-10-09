@@ -22,4 +22,4 @@ Projeto de catálogo de veículos desenvolvido com react.js e next.
 
 1. Ao atualizar as páginas de administração e edição do usuário, apresenta problemas de renderização provavelmente ligado ao comAutorizacao, mas não consegui resolver
 1. Ao cadastrar novo veículo a lista não atualiza os dados na lista
-1. Ao deletar o veículo, as vezes não atualiza os dados na lista
+1. Ao deletar o veículo, as vezes não atualiza os dados na lista (Resolvido removendo o parágrafo do form)

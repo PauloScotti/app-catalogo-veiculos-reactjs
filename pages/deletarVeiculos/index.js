@@ -38,14 +38,14 @@ function DeletarVeiculos({ idVeiculo }) {
                 <AcaoMensagem classe={classeAcao} mensagem={mensagemAcao} />
                 <div className="inputPublicoVeiulos">
 
+                    <p>Deseja realmente deletar o veículo?</p>
                     <form onSubmit={deletarVeiulo}>
-                        <p>Deseja realmente deletar o veículo?</p>
-                    <Botao
-                        texto={"Confirmar"}
-                        cor="vermelho"
-                        tipo="submit"
-                        desabilitado={estaSubmetendo}
-                    />
+                        <Botao
+                            texto={"Confirmar"}
+                            cor="vermelho"
+                            tipo="submit"
+                            desabilitado={estaSubmetendo}
+                        />
                     </form>
                 </div>
             </div>
