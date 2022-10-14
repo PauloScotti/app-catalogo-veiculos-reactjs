@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import UsuarioService from "../services/UsuarioService"
 
 const usuarioService = new UsuarioService();
@@ -7,21 +8,27 @@ const usuarioService = new UsuarioService();
 export default function comAutorizacao(Componente) {
     return (props) => {
         const router = useRouter();
+        const hasWindow = typeof window !== 'undefined';
+        const [usuarioLogado, setUsuarioLogado] = useState('');
 
-        if (typeof window !== 'undefined') {
-            if (!usuarioService.estaAutenticadoAdm()) {
-                router.replace('/');
-                return null;
+        useEffect(() => {
+            if (hasWindow) {
+                if (!usuarioService.estaAutenticadoAdm()) {
+                    router.replace('/');
+                    return null;
+                }
+    
+                setUsuarioLogado(usuarioService.obterInformacoesDoUsuarioLogado());
             }
+          }, []);
 
-            const usuarioLogado = usuarioService.obterInformacoesDoUsuarioLogado();
+            
 
             return (
                 <>
                     <Componente usuarioLogado={usuarioLogado} {...props} />
                 </>
             );
-        }
 
         return null;
     }

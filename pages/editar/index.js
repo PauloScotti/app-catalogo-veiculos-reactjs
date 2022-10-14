@@ -7,11 +7,16 @@ import Botao from '../../components/botao';
 import InputPublico from '../../components/inputPublico';
 import AcaoMensagem from "../../components/AcaoMensagem";
 import Header from "../../components/layout/header";
+import { useRouter } from 'next/router';
 
 const usuarioService = new UsuarioService();
 
 function EditarPerfil({ usuarioLogado }) {
+    const [estaSubmetendo, setEstaSubmetendo] = useState(false);
+    const [classeAcao, setClasseAcao] = useState("");
+    const [mensagemAcao, setMensagemAcao] = useState("");
     const [nome, setNome] = useState('');
+    const router = useRouter();
 
     useEffect(() => {
         if (!usuarioLogado) {
@@ -28,6 +33,11 @@ function EditarPerfil({ usuarioLogado }) {
                 return;
             }
 
+            
+            setEstaSubmetendo(true);
+            setClasseAcao('salvar');
+            setMensagemAcao('Atualizado com sucesso!');
+
             const corpoRequisicao = new FormData();
             corpoRequisicao.append('nome', nome);
 
@@ -37,29 +47,57 @@ function EditarPerfil({ usuarioLogado }) {
         } catch (error) {
             alert(`Erro ao editar perfil!`);
         }
+
+        setEstaSubmetendo(false);
+    }
+
+    const deletarPerfil = async (idUsuario) => {
+        setEstaSubmetendo(true);
+        setClasseAcao('deletar');
+        setMensagemAcao('Deletado com sucesso!');
+
+        try {
+            await usuarioService.deletarUsuarios(idUsuario);
+            await usuarioService.logout();
+            router.replace('/');
+            return null;
+
+        } catch (error) {
+            alert(
+                "Erro ao deletar o usuário. " + error?.response?.data?.erro
+            );
+        }
+
+        setEstaSubmetendo(false);
     }
 
     return (
         <>
             <Header />
-        <section className={`paginaPublica`}>
-            <div className='conteudoPaginaPublica'>
-                <AcaoMensagem classe={'salvar'} mensagem={'Atualizado com sucesso'} />
-                <div className='edicaoNome'>
-                    <InputPublico
-                        texto={nome}
-                        tipo="text"
-                        aoAlterarValor={e => setNome(e.target.value)}
-                        valor={nome}
-                    />
-                </div>
+            <section className={`paginaPublica`}>
+                <div className='conteudoPaginaPublica'>
+                    <AcaoMensagem classe={classeAcao} mensagem={mensagemAcao} />
+                    <div className='edicaoNome'>
+                        <InputPublico
+                            texto={nome}
+                            tipo="text"
+                            aoAlterarValor={e => setNome(e.target.value)}
+                            valor={nome}
+                        />
+                    </div>
                     <Botao
                         texto="Salvar alteração"
                         tipo="button"
                         manipularClique={() => atualizarPerfil()}
                     />
-            </div>
-        </section>
+                    <Botao
+                        texto="Deletar conta"
+                        tipo="button"
+                        cor='vermelho'
+                        manipularClique={() => deletarPerfil(usuarioLogado.id)}
+                    />
+                </div>
+            </section>
         </>
     );
 }

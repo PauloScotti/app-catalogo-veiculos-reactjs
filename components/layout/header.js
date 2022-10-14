@@ -9,7 +9,7 @@ export default function Header() {
 
     const [estaAutenticado, setEstaAutenticado] = useState(false);
     const token = useState('token', 'tokenAdm');
-    const nomeCompleto = localStorage?.getItem('nome');
+    const [nomeCompleto, setNomeCompleto] = useState('');
     const primeiroNome = nomeCompleto?.split(' ')[0] || '';
     const router = useRouter();
     const [active, setActive] = useState('');
@@ -26,10 +26,10 @@ export default function Header() {
         usuarioService.logout();
         router.push('/');
     }
-
-    document.title = "Catálogo de Veículos";
-
+    
     useEffect(() => {
+        document.title = "Catálogo de Veículos";
+        setNomeCompleto(localStorage?.getItem('nome'))
         setEstaAutenticado(
             usuarioService.estaAutenticadoAdm()
         );
@@ -68,22 +68,4 @@ export default function Header() {
             </header>
         );
       }
-
-
-        return (
-            <header>
-                <div className="navbar">
-                    <div className="logo"><Link href='/'>LOGO</Link></div>
-                    <div className={`hamburguer ${active}`} onClick={ativo}></div>
-                    <ul className={`menu ${active}`}>
-                        <li>{primeiroNome ? <Link href='/editar'>{'Olá, ' + primeiroNome}</Link> : ''}</li>
-                        <li><Link href='/'>Home</Link></li>
-                        <li>{primeiroNome ? <Link href={'/administrar'}>Administrar Veículos</Link> : ""}</li>
-                        <li>{primeiroNome ? <Link href={'/administrarUsuarios'}>Administrar Usuários</Link> : ""}</li>
-                        <li>{primeiroNome ? <button onClick={logout}>Sair</button> : <Link href='/login'>Login</Link>}</li>
-                    </ul>
-                </div>
-            </header>
-        );
-
 }
