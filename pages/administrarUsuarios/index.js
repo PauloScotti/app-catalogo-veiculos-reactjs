@@ -35,13 +35,13 @@ function AdministrarUsuarios() {
         <>
             <Header />
             <div className="container-listagem" onSubmit={atualizaDados}>
-                <div onSubmit={atualizaDados}>
+                <section>
                     <ModalVeiculos
                         titulo={"Cadastro de Usuários"}
                         botaoAbrirModal={"Cadastrar Usuário"}
                         conteudo={<CadastroUsuarioAdm />}
                     />
-                </div>
+                </section>
                 {listaUsuarios.map((dadosUsuarios, index) => (
                     <>
                         <div className="container-item">
@@ -51,17 +51,21 @@ function AdministrarUsuarios() {
                                 <p>{dadosUsuarios.nivelAcesso} </p>
                             </div>
                             <div className="botoesAcoes" onSubmit={atualizaDados}>
-                                <ModalVeiculos
-                                    titulo={"Editar Usuário"}
-                                    botaoAbrirModal={"Editar"}
-                                    conteudo={<EditarUsuarios idUsuario={(dadosUsuarios._id)} />}
-                                />
-                                <ModalVeiculos
-                                    titulo={"Deletar Usuário"}
-                                    botaoAbrirModal={"Deletar"}
-                                    variant="danger"
-                                    conteudo={<DeletarUsuarios idUsuario={(dadosUsuarios._id)} />}
-                                />
+                                <section>
+                                    <ModalVeiculos
+                                        titulo={"Editar Usuário"}
+                                        botaoAbrirModal={"Editar"}
+                                        conteudo={<EditarUsuarios idUsuario={(dadosUsuarios._id)} />}
+                                    />
+                                </section>
+                                <section>
+                                    <ModalVeiculos
+                                        titulo={"Deletar Usuário"}
+                                        botaoAbrirModal={"Deletar"}
+                                        variant="danger"
+                                        conteudo={<DeletarUsuarios idUsuario={(dadosUsuarios._id)} />}
+                                    />
+                                </section>
                             </div>
                         </div>
                     </>

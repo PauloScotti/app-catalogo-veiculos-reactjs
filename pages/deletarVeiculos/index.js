@@ -13,7 +13,8 @@ function DeletarVeiculos({ idVeiculo }) {
 
     const id = idVeiculo;
 
-    const deletarVeiculo = async () => {
+    const deletarVeiculo = async (e) => {
+        e.preventDefault();
 
         setEstaSubmetendo(true);
         setClasseAcao('deletar');

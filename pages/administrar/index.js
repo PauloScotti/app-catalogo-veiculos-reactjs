@@ -35,13 +35,13 @@ function Administrar() {
         <>
             <Header />
             <div className="container-listagem" onSubmit={atualizaDados}>
-                <div onSubmit={atualizaDados}>
+                <section>
                     <ModalVeiculos
                         titulo={"Cadastro de Veículos"}
                         botaoAbrirModal={"Cadastrar Veículo"}
                         conteudo={<CadastroVeiculos />}
                     />
-                </div>
+                </section>
                 {listaVeiculos.map((dadosVeiculos, index) => (
                     <>
                         <div className="container-item">
@@ -53,17 +53,21 @@ function Administrar() {
                                 <img src={dadosVeiculos.foto} alt="Foto do carro" />
                             </div>
                             <div className="botoesAcoes" onSubmit={atualizaDados}>
-                                <ModalVeiculos
-                                    titulo={"Editar Veículo"}
-                                    botaoAbrirModal={"Editar"}
-                                    conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
-                                />
-                                <ModalVeiculos
-                                    titulo={"Deletar Veículo"}
-                                    botaoAbrirModal={"Deletar"}
-                                    variant="danger"
-                                    conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
-                                />
+                                <section>
+                                    <ModalVeiculos
+                                        titulo={"Editar Veículo"}
+                                        botaoAbrirModal={"Editar"}
+                                        conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
+                                    />
+                                </section>
+                                <section>
+                                    <ModalVeiculos
+                                        titulo={"Deletar Veículo"}
+                                        botaoAbrirModal={"Deletar"}
+                                        variant="danger"
+                                        conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
+                                    />
+                                </section>
                             </div>
                         </div>
                     </>
