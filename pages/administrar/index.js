@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import VeiculosService from "../../services/VeiculosService";
 import comAutorizacao from "../../hoc/comAutorizacao";
@@ -43,34 +42,38 @@ function Administrar() {
                     />
                 </section>
                 {listaVeiculos.map((dadosVeiculos, index) => (
-                    <>
-                        <div className="container-item">
-                            <div>
-                                <p key={index}>Nome: {dadosVeiculos.nome}</p>
-                                <p>Marca: {dadosVeiculos.marca}</p>
-                                <p>Modelo: {dadosVeiculos.modelo} </p>
-                                <p>Valor: {dadosVeiculos.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </p>
+
+                    <div className="container-item" key={index}>
+                        <div>
+                            <p>Nome: {dadosVeiculos.nome}</p>
+                            <p>Marca: {dadosVeiculos.marca}</p>
+                            <p>Modelo: {dadosVeiculos.modelo} </p>
+                            <p>Valor: {dadosVeiculos.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </p>
+
+                            <picture>
+                                <source srcSet={dadosVeiculos.foto} type="image/webp" />
                                 <img src={dadosVeiculos.foto} alt="Foto do carro" />
-                            </div>
-                            <div className="botoesAcoes" onSubmit={atualizaDados}>
-                                <section>
-                                    <ModalVeiculos
-                                        titulo={"Editar Veículo"}
-                                        botaoAbrirModal={"Editar"}
-                                        conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
-                                    />
-                                </section>
-                                <section>
-                                    <ModalVeiculos
-                                        titulo={"Deletar Veículo"}
-                                        botaoAbrirModal={"Deletar"}
-                                        variant="danger"
-                                        conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
-                                    />
-                                </section>
-                            </div>
+                            </picture>
                         </div>
-                    </>
+                        <div className="botoesAcoes" onSubmit={atualizaDados}>
+                            <section>
+                                <ModalVeiculos
+                                    titulo={"Editar Veículo"}
+                                    botaoAbrirModal={"Editar"}
+                                    conteudo={<EditarVeiulos idVeiculo={(dadosVeiculos._id)} />}
+                                />
+                            </section>
+                            <section>
+                                <ModalVeiculos
+                                    titulo={"Deletar Veículo"}
+                                    botaoAbrirModal={"Deletar"}
+                                    variant="vermelho"
+                                    conteudo={<DeletarVeiculos idVeiculo={(dadosVeiculos._id)} />}
+                                />
+                            </section>
+                        </div>
+                    </div>
+
                 ))
                 }
             </div>

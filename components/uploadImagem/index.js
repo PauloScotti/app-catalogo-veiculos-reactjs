@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useRef, useEffect } from "react";
 
 export default function UploadImagem({
@@ -58,11 +57,14 @@ export default function UploadImagem({
         >
             {imagemPreview && (
                 <div className="imagemPreviewContainer">
-                    <img 
-                        src={imagemPreview}
-                        alt='imagem preview'
-                        className={imagemPreviewClassName}
-                    />
+                    <picture>
+                        <source srcSet={imagemPreview} type="image/webp" />
+                        <img
+                            src={imagemPreview}
+                            alt='imagem preview'
+                            className={imagemPreviewClassName}
+                        />
+                    </picture>
                 </div>
             )}
 

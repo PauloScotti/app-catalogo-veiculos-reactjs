@@ -16,7 +16,7 @@ function Veiculos() {
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
             });
-    }, []);
+    }, [id]);
 
     return (
         <>
@@ -24,7 +24,10 @@ function Veiculos() {
             <main>
                 <section className={`paginaVeículo`}>
                     <div className="conteudoPaginaVeículo">
-                        <img src={veiculo.foto} alt="Foto do carro" />
+                        <picture>
+                            <source srcSet={veiculo.foto} type="image/webp" />
+                            <img src={veiculo.foto} alt="Foto do carro" />
+                        </picture>
                         <h2 className="title">
                             {veiculo.nome} {veiculo.marca}
                         </h2>

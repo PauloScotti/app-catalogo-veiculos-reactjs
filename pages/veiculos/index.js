@@ -17,26 +17,27 @@ function Veiculos() {
     return (
         <main>
             {veiculos.map((v, i) => (
-                <>
                     <section className="cards" key={i}>
                         <Link href={`/veiculo?id=${v._id}`}>
-                        <div className="card">
-                            <div className="image">
-                                <img src={v.foto} />
-                            </div>
-                            <div className="content">
-                                <h2 className="title">
-                                    {v.nome} {v.marca}
-                                </h2>
-                                <p className="text--medium">{v.modelo}</p>
-                                <div className="info">
-                                    <p className="price text--medium">{v.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                            <div className="card">
+                                <div className="image">
+                                    <picture>
+                                        <source srcSet={v.foto} type="image/webp" />
+                                        <img alt="Foto do Carro" src={v.foto} />
+                                    </picture>
+                                </div>
+                                <div className="content">
+                                    <h2 className="title">
+                                        {v.nome} {v.marca}
+                                    </h2>
+                                    <p className="text--medium">{v.modelo}</p>
+                                    <div className="info">
+                                        <p className="price text--medium">{v.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </Link>
                     </section>
-                </>
             ))}
         </main>
     )

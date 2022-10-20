@@ -20,7 +20,7 @@ export default function comAutorizacao(Componente) {
     
                 setUsuarioLogado(usuarioService.obterInformacoesDoUsuarioLogado());
             }
-          }, []);
+          }, [hasWindow, router]);
 
             
 

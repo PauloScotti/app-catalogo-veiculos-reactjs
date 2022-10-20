@@ -1,3 +1,25 @@
+@mixin botaoPrimario {
+    background-color: $corPrimaria;
+    color: $branco;
+}
+
+@mixin botaoInvertido {
+    background-color: $branco;
+    color: $corPrimaria;
+    border: 1px solid $corPrimaria;
+}
+
+@mixin botaoVermelho {
+    background-color: $vermelho;
+    color: $branco;
+}
+
+@mixin botaoVermelhoInvertido {
+    background-color: $branco;
+    color: $vermelho;
+    border: 1px solid $vermelho;
+}
+
 .botaoModal {
     border: none;
     border-radius: 12px;
@@ -13,5 +35,29 @@
     span{
         font-size: 24px;
         letter-spacing: 2px;
+    }
+
+    &.primaria {
+        @include botaoPrimario;
+
+        &:hover {
+            @include botaoInvertido;
+        }
+    }
+
+    &.invertido {
+        @include botaoInvertido;
+
+        &:hover {
+            @include botaoPrimario;
+        }
+    }
+    
+    &.vermelho{
+        @include botaoVermelho;
+
+        &:hover {
+            @include botaoVermelhoInvertido;
+        }
     }
 }

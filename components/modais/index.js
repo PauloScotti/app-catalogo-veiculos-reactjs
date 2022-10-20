@@ -6,7 +6,7 @@ function ModalVeiculos({
     botaoAbrirModal,
     titulo,
     conteudo,
-    variant = "primary"
+    variant = "primaria"
 }) {
   const [show, setShow] = useState(false);
 
@@ -20,7 +20,7 @@ function ModalVeiculos({
 
   return (
     <>
-      <Button className="botaoModal" variant={variant} onClick={handleShow}>
+      <Button className={`botaoModal ${variant}`} onClick={handleShow}>
         {botaoAbrirModal}
       </Button>
 

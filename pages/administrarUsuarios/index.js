@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import UsuariosService from "../../services/UsuarioService";
 import comAutorizacao from "../../hoc/comAutorizacao";
@@ -43,10 +42,9 @@ function AdministrarUsuarios() {
                     />
                 </section>
                 {listaUsuarios.map((dadosUsuarios, index) => (
-                    <>
-                        <div className="container-item">
+                        <div className="container-item" key={index}>
                             <div>
-                                <p key={index}>{dadosUsuarios.nome}</p>
+                                <p>{dadosUsuarios.nome}</p>
                                 <p>{dadosUsuarios.email}</p>
                                 <p>{dadosUsuarios.nivelAcesso} </p>
                             </div>
@@ -62,13 +60,12 @@ function AdministrarUsuarios() {
                                     <ModalVeiculos
                                         titulo={"Deletar Usuário"}
                                         botaoAbrirModal={"Deletar"}
-                                        variant="danger"
+                                        variant="vermelho"
                                         conteudo={<DeletarUsuarios idUsuario={(dadosUsuarios._id)} />}
                                     />
                                 </section>
                             </div>
                         </div>
-                    </>
                 ))
                 }
             </div>
