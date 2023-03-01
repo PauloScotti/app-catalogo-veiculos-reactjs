@@ -32,7 +32,7 @@ function Veiculos() {
                             {veiculo.nome} {veiculo.marca}
                         </h2>
                         <p className="text--medium">{veiculo.modelo}</p>
-                        <p className="price text--medium">{veiculo.valor}</p>
+                        <p className="price text--medium">{veiculo.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                         <Botao
                             texto={"Comprar"}
                             tipo="submit"
