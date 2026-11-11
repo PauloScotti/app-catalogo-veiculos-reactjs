@@ -6,19 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "test": "vitest run"
   },
   "dependencies": {
-    "axios": "^1.1.0",
-    "bootstrap": "^5.2.2",
-    "next": "12.3.1",
-    "react": "18.2.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.55.0"
+    "axios": "^1.13.0",
+    "bootstrap": "^5.3.8",
+    "next": "^16.4.6",
+    "react": "^19.2.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.0",
+    "sass": "^1.90.0"
   },
   "devDependencies": {
-    "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1"
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

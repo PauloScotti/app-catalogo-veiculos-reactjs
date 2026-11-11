@@ -62,7 +62,9 @@ function EditarVeiculos({ idVeiculo }) {
             corpoRequisicao.append('marca', marca);
             corpoRequisicao.append('modelo', modelo);
             corpoRequisicao.append('valor', valor);
-            corpoRequisicao.append('file', foto.arquivo);
+            if (foto?.arquivo) {
+                corpoRequisicao.append('file', foto.arquivo);
+            }
 
             await veiculoService.editarVeiculos(id, corpoRequisicao);
 
@@ -112,7 +114,7 @@ function EditarVeiculos({ idVeiculo }) {
                             tipo="text"
                             aoAlterarValor={e => setMarca(e.target.value)}
                             valor={marca}
-                            mensagemValidacao="A marca do veículo precisa ter pelo menos 3 caracteres"
+                            mensagemValidacao="A marca do veículo precisa ter pelo menos 2 caracteres"
                             exibirMensagemValidacao={marca && !validaMarca(marca)}
                         />
 
@@ -121,7 +123,7 @@ function EditarVeiculos({ idVeiculo }) {
                             tipo="text"
                             aoAlterarValor={e => setModelo(e.target.value)}
                             valor={modelo}
-                            mensagemValidacao="A modelo do veículo precisa ter pelo menos 3 caracteres"
+                            mensagemValidacao="O modelo do veículo precisa ter pelo menos 2 caracteres"
                             exibirMensagemValidacao={modelo && !validaModelo(modelo)}
                         />
 

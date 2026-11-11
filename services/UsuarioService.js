@@ -1,9 +1,9 @@
 import HttpService from "./HttpService";
+import { encerrarSessao } from "../utils/sessao";
 
 export default class UsuarioService extends HttpService {
     async login(credenciais) {
         const {data} = await this.post('/login', credenciais);
-        console.log(data);
         
         localStorage.setItem("nome", data.nome);
         localStorage.setItem("email", data.email);
@@ -22,12 +22,7 @@ export default class UsuarioService extends HttpService {
     }
 
     async logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('tokenAdm');
-        localStorage.removeItem('nome');
-        localStorage.removeItem('email');
-        localStorage.removeItem('id');
-        localStorage.removeItem('nivelAcesso');
+        encerrarSessao();
     }
 
     async cadastroUsuarios(dados) {

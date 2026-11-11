@@ -45,7 +45,9 @@ function CadastroVeiculos() {
             corpoReqCadastro.append("marca", marca);
             corpoReqCadastro.append("modelo", modelo);
             corpoReqCadastro.append("valor", valor);
-            corpoReqCadastro.append('file', foto.arquivo);
+            if (foto?.arquivo) {
+                corpoReqCadastro.append('file', foto.arquivo);
+            }
 
             await veiculoService.cadastrarVeiculos(corpoReqCadastro);
 
@@ -92,7 +94,7 @@ function CadastroVeiculos() {
                             tipo="text"
                             aoAlterarValor={e => setMarca(e.target.value)}
                             valor={marca}
-                            mensagemValidacao="A marca do veículo precisa ter pelo menos 3 caracteres"
+                            mensagemValidacao="A marca do veículo precisa ter pelo menos 2 caracteres"
                             exibirMensagemValidacao={marca && !validaMarca(marca)}
                         />
 
@@ -101,7 +103,7 @@ function CadastroVeiculos() {
                             tipo="text"
                             aoAlterarValor={e => setModelo(e.target.value)}
                             valor={modelo}
-                            mensagemValidacao="A modelo do veículo precisa ter pelo menos 3 caracteres"
+                            mensagemValidacao="O modelo do veículo precisa ter pelo menos 2 caracteres"
                             exibirMensagemValidacao={modelo && !validaModelo(modelo)}
                         />
 

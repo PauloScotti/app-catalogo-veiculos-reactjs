@@ -5,7 +5,9 @@
         border-bottom: 1px solid $corPrimaria;
         margin-bottom: 25px;
 
-        input {
+        input,
+        select {
+            background: transparent;
             border: none;
             outline: none;
             color: $corPrimaria;

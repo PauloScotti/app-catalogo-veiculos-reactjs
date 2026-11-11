@@ -5,31 +5,26 @@ import UsuarioService from "../services/UsuarioService"
 
 const usuarioService = new UsuarioService();
 
+// Protege as telas de administração. É só conveniência de navegação: quem
+// garante a permissão é a API, que confere o nível de acesso a cada requisição.
 export default function comAutorizacao(Componente) {
     return (props) => {
         const router = useRouter();
-        const hasWindow = typeof window !== 'undefined';
-        const [usuarioLogado, setUsuarioLogado] = useState('');
+        const [usuarioLogado, setUsuarioLogado] = useState(null);
 
         useEffect(() => {
-            if (hasWindow) {
-                if (!usuarioService.estaAutenticadoAdm()) {
-                    router.replace('/');
-                    return null;
-                }
-    
-                setUsuarioLogado(usuarioService.obterInformacoesDoUsuarioLogado());
+            if (!usuarioService.estaAutenticadoAdm()) {
+                router.replace('/');
+                return;
             }
-          }, [hasWindow, router]);
+            setUsuarioLogado(usuarioService.obterInformacoesDoUsuarioLogado());
+        }, [router]);
 
-            
+        // Nada é renderizado até a sessão ser conferida.
+        if (!usuarioLogado) {
+            return null;
+        }
 
-            return (
-                <>
-                    <Componente usuarioLogado={usuarioLogado} {...props} />
-                </>
-            );
-
-        return null;
+        return <Componente usuarioLogado={usuarioLogado} {...props} />;
     }
 }
