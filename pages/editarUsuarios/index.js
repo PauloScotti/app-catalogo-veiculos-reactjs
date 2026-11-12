@@ -3,7 +3,7 @@ import Botao from "../../components/botao";
 import InputPublico from "../../components/inputPublico";
 import comAutorizacao from '../../hoc/comAutorizacao';
 import UsuarioService from "../../services/UsuarioService";
-import { validarNome, validarnivelAcesso } from "../../utils/validadores";
+import { validarNome, validarnivelAcesso, NIVEIS_DE_ACESSO } from "../../utils/validadores";
 import AcaoMensagem from "../../components/AcaoMensagem";
 
 const usuarioService = new UsuarioService();
@@ -79,7 +79,7 @@ function EditarVeiculos({ idUsuario }) {
 
                         <InputPublico
                             texto="Nível de Acesso"
-                            tipo="text"
+                            opcoes={NIVEIS_DE_ACESSO}
                             aoAlterarValor={e => setNivelAcesso(e.target.value)}
                             valor={nivelAcesso}
                             mensagemValidacao="O nivel de acesso precisa ser informado"

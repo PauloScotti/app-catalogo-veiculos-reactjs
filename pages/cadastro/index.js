@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Botao from "../../components/botao";
 import InputPublico from "../../components/inputPublico";
-import { validarEmail, validarSenha, validarNome, validarConfirmacaoSenha } from "../../utils/validadores";
+import { validarEmail, validarSenhaNova, validarNome, validarConfirmacaoSenha } from "../../utils/validadores";
 import UsuarioService from "../../services/UsuarioService";
 
 import { useRouter } from "next/router";
@@ -21,7 +21,7 @@ export default function Cadastro() {
         return (
             validarNome(nome)
             && validarEmail(email)
-            && validarSenha(senha)
+            && validarSenhaNova(senha)
             && validarConfirmacaoSenha(senha, confirmacaoSenha)
         );
     }
@@ -85,8 +85,8 @@ export default function Cadastro() {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
-                        mensagemValidacao="Precisa de pelo menos 3 caracteres"
-                        exibirMensagemValidacao={senha && !validarSenha(senha)}
+                        mensagemValidacao="Precisa de pelo menos 8 caracteres"
+                        exibirMensagemValidacao={senha && !validarSenhaNova(senha)}
                     />
 
                     <InputPublico

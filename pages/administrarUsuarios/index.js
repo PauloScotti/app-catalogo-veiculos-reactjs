@@ -18,7 +18,7 @@ function AdministrarUsuarios() {
             const resultado = await usuariosService.listarUsuarios();
             setListaUsuarios(resultado.data);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
 

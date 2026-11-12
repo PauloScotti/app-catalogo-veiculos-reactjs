@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AcaoMensagem } from "../helpers/AcaoMensagem";
+import { encerrarSessao, temSessao } from "../utils/sessao";
 
 export default class HttpService {
     constructor() {
@@ -14,27 +15,38 @@ export default class HttpService {
                 AcaoMensagem.exibir();
             }
 
-            const token = localStorage.getItem('token');
-            if(token){
+            const token = localStorage.getItem('tokenAdm') || localStorage.getItem('token');
+            if (token) {
                 config.headers.Authorization = 'Bearer ' + token
-            }
-            
-            const tokenAdm = localStorage.getItem('tokenAdm');
-            if(tokenAdm){
-                config.headers.Authorization = 'Bearer ' + tokenAdm
             }
 
             return config;
         });
 
-        this.axios.interceptors.response.use((response) => {
+        const aoTerminar = () => {
             this.quantidadeRequisicoes--;
             if (this.quantidadeRequisicoes === 0) {
                 AcaoMensagem.ocultar();
             }
+        };
 
-            return response;
-        });
+        this.axios.interceptors.response.use(
+            (response) => {
+                aoTerminar();
+                return response;
+            },
+            (erro) => {
+                // Sem isto, uma requisição com erro deixava a mensagem de ação presa na tela.
+                aoTerminar();
+
+                // Token expirado ou inválido: encerra a sessão e volta para o login.
+                if (erro?.response?.status === 401 && temSessao()) {
+                    encerrarSessao();
+                    window.location.href = '/login';
+                }
+                return Promise.reject(erro);
+            }
+        );
     }
 
     post(url, data) {
@@ -50,7 +62,6 @@ export default class HttpService {
     }
 
     delete(url) {
-        console.log(url);
         return this.axios.delete(url);
     }
 }

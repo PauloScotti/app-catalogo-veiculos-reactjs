@@ -18,7 +18,7 @@ function Administrar() {
             const resultado = await veiculosService.listarVeiculos();
             setListaVeiculos(resultado.data);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
 

@@ -21,10 +21,9 @@ function Veiculos() {
                         <Link href={`/veiculo?id=${v._id}`}>
                             <div className="card">
                                 <div className="image">
-                                    <picture>
-                                        <source srcSet={v.foto} type="image/webp" />
-                                        <img alt="Foto do Carro" src={v.foto} />
-                                    </picture>
+                                    {v.foto
+                                        ? <img alt={`Foto do ${v.nome}`} src={v.foto} loading="lazy" />
+                                        : <span className="semFoto">Sem foto</span>}
                                 </div>
                                 <div className="content">
                                     <h2 className="title">

@@ -3,7 +3,7 @@ import InputPublico from "../../components/inputPublico";
 import { useState } from "react";
 import UsuarioService from '../../services/UsuarioService';
 
-import {validarEmail, validarSenha, validarNome, validarConfirmacaoSenha, validarnivelAcesso} from '../../utils/validadores';
+import {validarEmail, validarSenhaNova, validarNome, validarConfirmacaoSenha, validarnivelAcesso, NIVEIS_DE_ACESSO} from '../../utils/validadores';
 import AcaoMensagem from "../../components/AcaoMensagem";
 
 const usuarioService = new UsuarioService();
@@ -22,7 +22,7 @@ export default function Cadastro() {
         return (
             validarNome(nome)
             && validarEmail(email) 
-            && validarSenha(senha)
+            && validarSenhaNova(senha)
             && validarConfirmacaoSenha(senha, confirmarSenha)
             && validarnivelAcesso(nivelAcesso)
         );
@@ -73,7 +73,7 @@ export default function Cadastro() {
                     
                     <InputPublico
                         texto="Nível de Acesso"
-                        tipo="nivelAcesso"
+                        opcoes={NIVEIS_DE_ACESSO}
                         aoAlterarValor={e => setNivelAcesso(e.target.value)}
                         valor={nivelAcesso}
                         mensagemValidacao="O nivel de acesso precisa ser informado"
@@ -94,8 +94,8 @@ export default function Cadastro() {
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
                         valor={senha}
-                        mensagemValidacao="A senha precisa ter pelo menos 4 caracteres"
-                        exibirMensagemValidacao={senha && !validarSenha(senha)}
+                        mensagemValidacao="A senha precisa ter pelo menos 8 caracteres"
+                        exibirMensagemValidacao={senha && !validarSenhaNova(senha)}
                     />
 
                     <InputPublico
